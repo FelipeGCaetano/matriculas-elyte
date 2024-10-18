@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+enum Shift {
+  MANHA
+  TARDE
+  INTEGRAL
+}
+
+enum RegistrationStatus {
+  INDICADO
+  EM_PROGRESSO
+  FALHA
+  SUCESSO
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id          String        @id @default(uuid())
+  name        String
+  class       String
+  shift       Shift
+  discount    Int           @default(0)
+  Indications Indications[]
+}
+
+model Indications {
+  id           String             @id @default(uuid())
+  name         String
+  class        String
+  shift        Shift
+  guardian     String
+  phone        String
+  email        String
+  isMatriculed Boolean            @default(false)
+  student      Student            @relation(fields: [student_id], references: [id])
+  student_id   String
+  status       RegistrationStatus @default(INDICADO)
+}
