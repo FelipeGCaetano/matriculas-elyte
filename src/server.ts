@@ -2,7 +2,7 @@ import cors from "cors"
 import dotenv from "dotenv"
 import express from "express"
 import Routes from "./routes";
-import { ErrorMiddleware } from "./http/middleware/error.middleware";
+import { ErrorMiddleware } from "./http/middlewares/error.middleware";
 
 dotenv.config();
 const app = express();

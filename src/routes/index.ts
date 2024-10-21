@@ -1,5 +1,9 @@
 import { Router } from "express";
 
+import IndicationRouter from "./indications/indications.routes";
+
 const Routes = Router()
 
-export default Routes
+Routes.use('/indications', IndicationRouter)
+
+export default Routes;
