@@ -14,4 +14,4 @@ app.use("/api", Routes)
 
 app.use(ErrorMiddleware);
 
-app.listen(PORT, () => `Servidor rodando na porta ${PORT}`);
+app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));

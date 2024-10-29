@@ -1,5 +1,5 @@
 import { type Request, type Response } from "express";
-import { ApplicationError, ResponseError } from "@/errors/application";
+import { ApplicationError, ResponseError } from "../../errors/application";
 
 export function ErrorMiddleware( err: Error, req: Request, res: Response) {
     
