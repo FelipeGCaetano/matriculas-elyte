@@ -1,7 +1,7 @@
-import { type Request, type Response } from "express";
+import { type Request, type Response, type NextFunction } from "express";
 import { ApplicationError, ResponseError } from "../../errors/application";
 
-export function ErrorMiddleware( err: Error, req: Request, res: Response) {
+export function ErrorMiddleware( err: Error, req: Request, res: Response, next: NextFunction) {
     
     const isApplicationError = err instanceof ApplicationError;
     

@@ -82,7 +82,7 @@ export class IndicationService {
 
         return {
             status: "success",
-            message: "teste"
+            message: "Indicação registrada com sucesso"
         }
     }
 
