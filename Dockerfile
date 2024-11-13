@@ -16,6 +16,8 @@ COPY . .
 # Gere o schema do Prisma
 RUN npx prisma generate  # Gera o Prisma Client
 
+RUN npx prisma migrate dev --name init
+
 # A partir de uma nova imagem para evitar incluir devDependencies e otimizar a imagem final
 FROM node:18-alpine AS runner
 
