@@ -16,23 +16,11 @@ EXPOSE 5432
 # Use a imagem oficial do Node.js como base
 FROM node:18-alpine AS builder
 
-# Crie o diretório de trabalho
-WORKDIR /app
-
-# Copie os arquivos de configuração do package e o lockfile
-COPY package.json package-lock.json* yarn.lock* ./
-
 # Instale as dependências
 RUN npm install -y
 
-# Copie o restante dos arquivos do projeto
-COPY . .
-
 # A partir de uma nova imagem para evitar incluir devDependencies e otimizar a imagem final
 FROM node:18-alpine AS runner
-
-# Diretório de trabalho para a imagem final
-WORKDIR /app
 
 # Configura a variável de ambiente para produção
 ENV NODE_ENV=production
