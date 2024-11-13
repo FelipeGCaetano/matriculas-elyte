@@ -28,5 +28,8 @@ ENV NODE_ENV=production
 # Expor a porta 3333, usada pelo seu aplicativo Node.js no modo de produção
 EXPOSE 3333
 
+# Gerar prisma schema
+CMD ["npx", "prisma", "generate"]
+
 # Comando para iniciar a aplicação
 CMD ["npm", "run", "dev"]
