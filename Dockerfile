@@ -13,6 +13,9 @@ RUN npm install
 # Copie todo o código para o contêiner
 COPY . .
 
+# Gere o schema do Prisma
+RUN npx prisma generate  # Gera o Prisma Client
+
 # A partir de uma nova imagem para evitar incluir devDependencies e otimizar a imagem final
 FROM node:18-alpine AS runner
 
@@ -27,9 +30,6 @@ ENV NODE_ENV=production
 
 # Expor a porta 3333, usada pelo seu aplicativo Node.js no modo de produção
 EXPOSE 3333
-
-# Gerar prisma schema
-CMD ["npx", "prisma", "generate"]
 
 # Comando para iniciar a aplicação
 CMD ["npm", "run", "dev"]
