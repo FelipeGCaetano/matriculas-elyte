@@ -43,7 +43,7 @@ export class IndicationService {
         let student_id: string;
 
         // Verifica se o indicador existe
-        const studentAlreadyExists = await prisma.student.findUnique({
+        const studentAlreadyExists = await prisma.student.findFirst({
             where: {
                 email: student.email
             }
@@ -60,7 +60,7 @@ export class IndicationService {
         }
 
         // Verifica se já foi indicado por alguém
-        const alreadyWasIndicated = await prisma.indications.findUnique({
+        const alreadyWasIndicated = await prisma.indications.findFirst({
             where: {
                 name: indicator.name,
                 shift: indicator.shift,
@@ -89,7 +89,7 @@ export class IndicationService {
     }
 
     async delete(email: string): Promise<DefaultResponse> {
-        const indicator = await prisma.indications.findUnique({
+        const indicator = await prisma.indications.findFirst({
             where: {
                 email
             }
