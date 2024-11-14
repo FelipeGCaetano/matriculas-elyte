@@ -32,7 +32,7 @@ model Student {
   class       String
   shift       Shift
   guardian    String
-  email       String        @unique
+  email       String
   discount    Int           @default(0)
   Indications Indications[]
 }
@@ -44,7 +44,7 @@ model Indications {
   shift        Shift
   guardian     String
   phone        String
-  email        String             @unique
+  email        String
   isMatriculed Boolean            @default(false)
   student      Student            @relation(fields: [student_id], references: [id])
   student_id   String
