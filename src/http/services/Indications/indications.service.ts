@@ -62,6 +62,8 @@ export class IndicationService {
         // Verifica se já foi indicado por alguém
         const alreadyWasIndicated = await prisma.indications.findUnique({
             where: {
+                name: indicator.name,
+                shift: indicator.shift,
                 email: indicator.email
             },
             include: {
