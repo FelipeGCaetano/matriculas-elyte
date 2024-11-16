@@ -40,6 +40,7 @@ export class IndicationService {
     }
 
     async create(student: StudentCreateInput, indicator: IndicationsCreateInput): Promise<DefaultResponse> {
+        console.log(student, indicator)
         let student_id: string;
 
         // Verifica se o indicador existe
